@@ -1,0 +1,28 @@
+{
+    "name": "kiboflavin/orbital-batch",
+    "type": "library",
+    "description": "PHP Orbital Batch XML library",
+    "keywords": [
+        "orbital",
+        "batch",
+        "xml",
+        "chase",
+        "paymentech"
+    ],
+    "homepage": "https://github.com/kiboflavin/orbital-batch",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Haggart",
+            "email": "phpdev@bsfh.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "OrbitalBatch\\": "OrbitalBatch/"
+        }
+    }
+}
