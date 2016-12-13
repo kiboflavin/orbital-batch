@@ -67,11 +67,12 @@ class Request
     /**
      * Constructor.
      *
-     * @param string $username        API username
+     * @param string company          Company name, used for filename generation
+     * @param string $userid          API username
      * @param string $industry_type   Industry type
      * @param string $bin             Transaction routing
      * @param string $merchant_id     Merchant ID
-     * @param string $terminal_id     Salem or PNS
+     * @param string $terminal_id     Terminal ID
      */
     public function __construct($company, $userid, $industry_type, $bin, $merchant_id, $terminal_id)
     {
@@ -278,6 +279,7 @@ class Request
             }
         }
 
+        # finally, add the request count to the transRequest element at the top
         $request_count_attr = $dom->createAttribute(self::REQUEST_COUNT);
         $request_count_attr->value = $this->request_count - 1;
         $trans_request_element->appendChild($request_count_attr);
