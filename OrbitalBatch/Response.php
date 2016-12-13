@@ -18,9 +18,9 @@ class Response
         }
 
         foreach ($dom as $transaction) {
-                $response_class = "\\OrbitalBatch\\Response\\{$transaction->getName()}";
+            $response_class = "\\OrbitalBatch\\Response\\{$transaction->getName()}";
 
-                $this->transactions[] = new $response_class($transaction);
+            $this->transactions[] = new $response_class($transaction);
         }
     }
 
