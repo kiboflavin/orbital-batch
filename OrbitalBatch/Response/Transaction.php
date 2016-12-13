@@ -18,4 +18,11 @@ class Transaction {
         return NULL;
     }
 
+    public function approved() {
+        return false;
+    }
+
+    public function status() {
+        return null;
+    }
 }
