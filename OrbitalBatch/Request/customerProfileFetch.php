@@ -14,6 +14,6 @@ class customerProfileFetch extends Transaction
         return array(
             "bin", "merchantID", "customerName", "customerRefNum",
             "ccAccountNum", "euddIBAN"
-       ); 
+        ); 
     }
 }

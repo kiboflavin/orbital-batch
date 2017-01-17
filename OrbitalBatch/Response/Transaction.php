@@ -1,8 +1,8 @@
 <?php namespace OrbitalBatch\Response;
 
-class Transaction {
-	
-	public $parameters;
+class Transaction
+{
+    public $parameters;
 
     public function __construct(\SimpleXMLElement $parameters)
     {
@@ -15,14 +15,16 @@ class Transaction {
             return (string)$this->parameters->$var;
         }
 
-        return NULL;
+        return null;
     }
 
-    public function approved() {
+    public function approved() 
+    {
         return false;
     }
 
-    public function status() {
+    public function status() 
+    {
         return null;
     }
 }

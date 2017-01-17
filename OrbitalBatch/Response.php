@@ -1,7 +1,7 @@
 <?php namespace OrbitalBatch;
 
 /**
- * Generates Orbital Batch XML request
+ * Generates Orbital Batch XML response
  *
  * @package OrbitalBatch
  */

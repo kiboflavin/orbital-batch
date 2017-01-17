@@ -67,12 +67,12 @@ class Request
     /**
      * Constructor.
      *
-     * @param string company          Company name, used for filename generation
-     * @param string $userid          API username
-     * @param string $industry_type   Industry type
-     * @param string $bin             Transaction routing
-     * @param string $merchant_id     Merchant ID
-     * @param string $terminal_id     Terminal ID
+     * @param string $company       Company name, used for filename generation
+     * @param string $userid        API username
+     * @param string $industry_type Industry type
+     * @param string $bin           Transaction routing
+     * @param string $merchant_id   Merchant ID
+     * @param string $terminal_id   Terminal ID
      */
     public function __construct($company, $userid, $industry_type, $bin, $merchant_id, $terminal_id)
     {
@@ -156,7 +156,6 @@ class Request
 
     /**
      * Send "End of day" transaction to settle today's batch
-     *
      */
     public function endOfDay()
     {
@@ -241,21 +240,21 @@ class Request
     public function createBatch()
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
-        $dom->formatOutput = TRUE;
+        $dom->formatOutput = true;
 
         $trans_request_element = $dom->createElement(self::TRANS_REQUEST);
         $trans_request_node = $dom->appendChild($trans_request_element);
 
-        # add batchFileID block
+        // add batchFileID block
         $trans_request_node->appendChild($this->gen_batchFileID($dom));
         
-        # add stored transactions in order
+        // add stored transactions in order
         foreach ($this->transaction_order as $trans_type) {
 
-            # if there are transactions of this type
+            // if there are transactions of this type
             if (! empty($this->{$trans_type})) {
 
-                # recurse through stored transactions
+                // recurse through stored transactions
                 foreach ($this->{$trans_type} as $tr) {
 
                     $request_no_attr = $dom->createAttribute(self::BATCH_REQUEST_NO);
@@ -266,10 +265,10 @@ class Request
 
                     $trans_type_node = $trans_request_node->appendChild($trans_type_element);
 
-                    # recurse through fields, add them in the right order
+                    // recurse through fields, add them in the right order
                     foreach ($tr->valid_fields() as $field) {
 
-                        # add the field if its specified
+                        // add the field if its specified
                         if (isset($tr->parameters[$field])) {
                             $item = $dom->createElement($field, $tr->parameters[$field]);
                             $trans_type_node->appendChild($item);
@@ -279,7 +278,7 @@ class Request
             }
         }
 
-        # finally, add the request count to the transRequest element at the top
+        // finally, add the request count to the transRequest element at the top
         $request_count_attr = $dom->createAttribute(self::REQUEST_COUNT);
         $request_count_attr->value = $this->request_count - 1;
         $trans_request_element->appendChild($request_count_attr);

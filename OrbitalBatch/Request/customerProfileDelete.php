@@ -13,6 +13,6 @@ class customerProfileDelete extends Transaction
     {
         return array(
              "bin", "merchantID", "customerName", "customerRefNum"
-       );
+        );
     }
 }
