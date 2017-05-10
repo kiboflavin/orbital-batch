@@ -17,7 +17,7 @@ class Request
     const FILE_DATE_TIME             = 'fileDateTime';
     const FILE_ID                    = 'fileID';
     const VERSION                    = 'version';
-    
+
     const AUTHORIZE                  = 'A';
     const AUTHORIZE_MARK_FOR_CAPTURE = 'AC';
     const FORCE_CAPTURE              = 'FC';
@@ -95,7 +95,7 @@ class Request
     {
         return strftime("%Y%m%d%H%M");
     }
-    
+
     /**
      * current fileID
      *
@@ -125,7 +125,7 @@ class Request
     /**
      * Authorize and capture a transaction
      *
-     * @param array $transaction Transaction paramters
+     * @param array $transaction Transaction parameters
      */
     public function auth_capture(array $transaction)
     {
@@ -141,7 +141,7 @@ class Request
     /**
      * Refund a transaction
      *
-     * @param array $transaction Transaction paramters
+     * @param array $transaction Transaction parameters
      */
     public function refund(array $transaction)
     {
@@ -169,7 +169,7 @@ class Request
     /**
      * Capture an authorized transaction
      *
-     * @param array $transaction Transaction paramters
+     * @param array $transaction Transaction parameters
      */
     public function markForCapture(array $transaction)
     {
@@ -222,10 +222,10 @@ class Request
 
         $filedatetime_element = $dom->createElement(self::FILE_DATE_TIME, $this->fileDateTime);
         $batch_file_id_node->appendChild($filedatetime_element);
-        
+
         $fileid_element = $dom->createElement(self::FILE_ID, $this->fileID);
         $batch_file_id_node->appendChild($fileid_element);
-        
+
         $version_element = $dom->createElement(self::VERSION, self::SCHEMA_VERSION);
         $batch_file_id_node->appendChild($version_element);
 
@@ -247,7 +247,7 @@ class Request
 
         // add batchFileID block
         $trans_request_node->appendChild($this->gen_batchFileID($dom));
-        
+
         // add stored transactions in order
         foreach ($this->transaction_order as $trans_type) {
 
